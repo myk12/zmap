@@ -64,7 +64,7 @@ static int mpsynscan_init_perthread(void *buf, macaddr_t *src, macaddr_t *gw,
 	uint16_t len = htons(sizeof(struct ip) + sizeof(struct tcphdr) + sizeof(struct tcp_options));
 	make_ip_header(ip_header, IPPROTO_TCP, len);
 	struct tcphdr *tcp_header = (struct tcphdr *)(&ip_header[1]);
-	make_tcp_header(tcp_header, dst_port, TH_SYN);
+	make_mptcp_header(tcp_header, dst_port, TH_SYN);
 	// https://stackoverflow.com/questions/42750552/read-tcp-options-fields
 	// fill in options
 	struct tcp_options *opts = (struct tcp_options*)(&tcp_header[1]);
